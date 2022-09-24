@@ -3,6 +3,10 @@ This function has no name, but it has an ordinary value.
 Also note that this function is <b>undocumented</b>, meaning that it could be removed in future releases of Windows.
 Although it is used in taskmgr.exe :/
 
+## Compatibility
+
+I think Win2K and higher. I guess that's more than u need, eh?
+
 ## Close Definition
 Yes, I took it from ReactOS docs. Any problems?
 ```
