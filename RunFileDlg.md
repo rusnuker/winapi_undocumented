@@ -1,7 +1,7 @@
 ## RunFileDlg, #61 (0x3D)
 This function has no name, but it has an ordinary value.
-Also note that this function is <b>undocumented</b>, meaning that it could be removed in future releases of Windows.
-Although it is used in taskmgr.exe :/
+Also note that this function is <b>undocumented</b>. That means: a) it has no Microsoft Docs description and b) it could be removed in future releases of Windows.
+Although it is used in taskmgr.exe and it is widely used :/
 
 ## Compatibility
 
