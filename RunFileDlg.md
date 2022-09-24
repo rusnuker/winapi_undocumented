@@ -44,3 +44,6 @@ int main() {
 	RunFileDlg(NULL, 0, 0, L"Title!", L"Description!", 0);
 }
 ```
+
+## Return value
+It is normal integer; 0 on success and non-zero on error. I guess you can use GetLastError()
