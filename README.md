@@ -1,1 +1,1 @@
-I don't fuckin know where to find SHELL32 functions descriptions, so i will add here definitions for functions when i will find it. If you know where to find SHELL32 docs, please let me know somewhere in Issues..
+I don't fuckin know where to find proper winapi dll function descriptions, so i will add them here in case someone wants to use them but they got no clue on how this works.
