@@ -39,10 +39,10 @@ To call it, use something like that (IT IS IN C):
 #include <ntdef.h>		// NTAPI functions
 #include <stdbool.h>  // bool values for C99
 
-#define HARDERR_MEMZ          0xC0000022 // Access Denied
-#define HARDERR_6IX_9INE	  	0xC0000069 // Deleting Last Admin
+#define HARDERR_MEMZ		0xC0000022 // Access Denied
+#define HARDERR_6IX_9INE	0xC0000069 // Deleting Last Admin
 #define HARDERR_HACKERV_TUTOR	0xC0000144 // Unhandled Exception 
-#define HARDERR_TWOTWOEIGHT		0xC0000228 // Stack Overflow Read
+#define HARDERR_TWOTWOEIGHT	0xC0000228 // Stack Overflow Read
 #define HARDERR_GET_REKT_NOOB	0xC0000420 // Assertion Failed
 
 // Function load macro
@@ -78,7 +78,7 @@ void CauseBlueScreen(NTSTATUS code) {
 }
 
 int main() {
-  CauseBlueScreen(HARDERR_MEMZ); // Call a custom function with custom eror code
+	CauseBlueScreen(HARDERR_MEMZ); // Call a custom function with custom eror code
 }
 ```
 
