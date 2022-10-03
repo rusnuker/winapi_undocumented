@@ -4,6 +4,8 @@ This function sends a HARDERROR_MSG message to the LPC listener (csrss.exe) that
 
 LOL, just kidding, this function can do much more!! For example, it can... bluescreen the system.
 
+**Note:** be careful with this. It's hard to believe, but this function raises a **real** BSOD on your system.
+
 ## Compatibility
 
 I think Win2K and higher. I guess that's more than u need, eh?
