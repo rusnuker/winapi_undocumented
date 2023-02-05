@@ -9,24 +9,24 @@ Also note that this function is <b>undocumented</b>. That means: a) it has no Mi
 I think Win2K and higher. I guess that's more than u need, eh?
 
 ## Close Definition
-Yes, I took it from ReactOS docs. Any problems?
+All the arguments can be NULL if you want to.
 ```
-int RunFileDlg
+STDAPI_(int) RunFileDlg
 (
-  HWND hwndOwner, // The owner window handle (could be NULL, no parent window)
-  HICON hIcon, // The icon handle. Use LoadIcon (not LoadImage) to set it or set it to NULL for a default icon.
-  LPCWSTR lpstrDirectory, // A [full] path to the [working?] directory. Leave to NULL for [???]
-  LPCWSTR lpstrTitle, // A title. Leave to NULL for default title.
-  LPCWSTR lpstrDescription, // A text. Leave to NULL for default text.
-  UINT uFlags // Flags (later on)
+  HWND hwndParent, // A handle to the parent window. Set to NULL to no parent window.
+  HICON hIcon, // Custom icon handle generated with LoadIcon (not LoadImage) or NULL for the default icon.
+  LPCWSTR pszWorkingDir, // I DON'T THINK THIS MEANS ANYTHING. Set to NULL.
+  LPCWSTR pszTitle, // Custom title or NULL for default.
+  LPCWSTR pszPrompt, // Custom description or NULL for default.
+  DWORD dwFlags // Flags. 
 )
 ```
 Flags:
 ```
-#define RFF_NOBROWSE 1       // Removes the browse button.
+#define RFF_NOBROWSE 1       // Removes the "Browse..." button.
 #define RFF_NODEFAULT 2      // No default item (recent command) selected.
 #define RFF_CALCDIRECTORY 4  // Calculates the working directory from the file name.
-#define RFF_NOLABEL 8        // Removes the edit box label.
+#define RFF_NOLABEL 8        // ~~Removes the edit box label~~ Removes the "Open: " lable.
 #define RFF_NOSEPARATEMEM 14 // Removes the Separate Memory Space check box (Windows NT only).
 ```
 ## Calling
@@ -41,9 +41,11 @@ To call it, use something like that (IT IS IN C):
 // Function load macro
 #define GetLibFunc(a, b) GetProcAddress(LoadLibraryA(a), b)
 
-// No recent command selected
+// No recent command selected.
 #define RFF_NODEFAULT 2
 
+// Removes the "Browse..." button.
+#define RFF_NOBROWSE 1
 
 int main() {
 	HICON hIcon = LoadIcon(0, MAKEINTRESOURCE(OIC_NOTE)); // Load an OEM "information" icon
@@ -54,10 +56,10 @@ int main() {
 		0, // Default directory or something
 		L"uhhhhh what", // title
 		L"press something and ok to run", // text
-		RFF_NODEFAULT // No recent command selected
+		RFF_NODEFAULT | RFF_NOBROWSE // No recent command selected and no Browse button.
 	);
 }
 ```
 
 ## Return value
-It is normal integer; 0 on success and non-zero on error. No idea if GetLastError() will work.
+It is normal integer; 0 on success and non-zero on error.
