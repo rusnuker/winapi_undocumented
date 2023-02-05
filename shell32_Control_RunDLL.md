@@ -13,7 +13,7 @@ Control_RunDLL
 (
   HWND hwndStub, // A handle to a parent window. If this parameter is NULL, the CPL has no owner window.
   HINSTANCE hAppInstance, // Always NULL
-  LPSTR pszCmdLine, // A (full) path to the CPL file.
+  LPSTR pszCmdLine, // A (full) path to the CPL file **or** NULL to open a Control Panel itself.
   int nCmdShow // This thing travels across multiple function calls, and eventually being passed to ShellExecuteEx. BUT IT DOESN'T MAKE ENY SENSE. LEAVE TO NULL
 )
 ```
