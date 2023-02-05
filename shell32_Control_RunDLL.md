@@ -41,5 +41,5 @@ int main() {
 ```
 
 ## Return value
--Seems like it's always 1. Maybe it returns nothing, I have no idea.-
+~~Seems like it's always 1. Maybe it returns nothing, I have no idea.~~
 No return value! VOID
