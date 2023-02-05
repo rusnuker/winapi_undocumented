@@ -22,28 +22,41 @@ int RunFileDlg
 ```
 Flags:
 ```
-#define RFF_NOBROWSE 1 // Removes the browse button.
-#define RFF_NODEFAULT 2 // No default item selected.
-#define RFF_CALCDIRECTORY 4 // Calculates the working directory from the file name.
-#define RFF_NOLABEL 8 // Removes the edit box label.
+#define RFF_NOBROWSE 1       // Removes the browse button.
+#define RFF_NODEFAULT 2      // No default item (recent command) selected.
+#define RFF_CALCDIRECTORY 4  // Calculates the working directory from the file name.
+#define RFF_NOLABEL 8        // Removes the edit box label.
 #define RFF_NOSEPARATEMEM 14 // Removes the Separate Memory Space check box (Windows NT only).
 ```
 ## Calling
 To call it, use something like that (IT IS IN C):
 
 ```
+// OEM resources defined in winuser.h
+#define OEMRESOURCE
+
 #include <windows.h> // Hooking up WinAPI
 
 // Function load macro
 #define GetLibFunc(a, b) GetProcAddress(LoadLibraryA(a), b)
 
+// No recent command selected
+#define RFF_NODEFAULT 2
+
+
 int main() {
-	//Get a function with its ordinary value 
-	FARPROC RunFileDlg = GetLibFunc("shell32", MAKEINTRESOURCE(61));
-	// Run it and wait
-	RunFileDlg(NULL, 0, 0, L"Title!", L"Description!", 0);
+	HICON hIcon = LoadIcon(0, MAKEINTRESOURCE(OIC_NOTE)); // Load an OEM "information" icon
+	FARPROC RunFileDlg = GetLibFunc("shell32", MAKEINTRESOURCE(61)); // Get a function with its ordinary value (remember, RunFileDlg has no name)
+	
+	RunFileDlg(0, // No owner window
+		hIcon, // A loaded icon
+		0, // Default directory or something
+		L"uhhhhh what", // title
+		L"press something and ok to run", // text
+		RFF_NODEFAULT // No recent command selected
+	);
 }
 ```
 
 ## Return value
-It is normal integer; 0 on success and non-zero on error. I guess you can use GetLastError()
+It is normal integer; 0 on success and non-zero on error. No idea if GetLastError() will work.
