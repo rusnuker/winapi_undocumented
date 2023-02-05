@@ -10,10 +10,19 @@ I think Win2K and higher. I guess that's more than u need, eh?
 ```
 BOOL Control_RunDLL // Is it really bool? It always returns 1
 (
-  HWND hWnd, // A handle to a parent window. If this parameter is NULL, the DLL has no owner window.
+  HWND hWnd,
   HINSTANCE hInstance, // An instance handle of the DLL (???). Always (?) NULL.
   LPCSTR lpCmdLine, // CPL file name (file path) and arguments separated by a comma.
   int nCmdShow // Show state. Leave to NULL.
+)
+
+STDAPI_(void) // I was right, it returns NOTHING
+Control_RunDLL
+(
+  HWND hwndStub, // A handle to a parent window. If this parameter is NULL, the CPL has no owner window.
+  HINSTANCE hAppInstance, // Always NULL
+  LPSTR pszCmdLine, // A (full) path to the CPL file.
+  int nCmdShow // This thing travels across multiple function calls, and eventually being passed to ShellExecuteEx. BUT IT DOESN'T MAKE ENY SENSE. LEAVE TO NULL
 )
 ```
 ## Calling
@@ -32,4 +41,5 @@ int main() {
 ```
 
 ## Return value
-Seems like it's always 1. Maybe it returns nothing, I have no idea.
+-Seems like it's always 1. Maybe it returns nothing, I have no idea.-
+No return value! VOID
