@@ -9,7 +9,7 @@ I think Win2K and higher.
 
 ## Close Definition
 ```C
-BOOL _LockWorkStation
+BOOL _LockWorkStation // Exported as LockWorkStation, defined as NtUserLockWorkStation...
 (
   VOID // Yeah, no arguments
 )
