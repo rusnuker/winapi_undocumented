@@ -12,7 +12,7 @@ BOOL Control_RunDLL // Is it really bool? It always returns 1
 (
   HWND hWnd, // A handle to a parent window. If this parameter is NULL, the DLL has no owner window.
   HINSTANCE hInstance, // An instance handle of the DLL (???). Always (?) NULL.
-  LPCSTR lpCmdLine, // .CPL file name (file path).
+  LPCSTR lpCmdLine, // CPL file name (file path) and arguments separated by a comma.
   int nCmdShow // Show state. Leave to NULL.
 )
 ```
