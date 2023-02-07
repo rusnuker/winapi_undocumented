@@ -2,6 +2,8 @@
 
 Turn a window into a hung gray "ghost".
 
+![image](https://i2.imageban.ru/out/2023/02/07/4ecf212925c76e2738bb3f1dfa89f743.png)
+
 ## Compatibility
 
 I think Vista (???) and higher.
