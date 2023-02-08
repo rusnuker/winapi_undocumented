@@ -28,6 +28,8 @@ To call it, use something like this (IT IS IN C):
 
 int main() {
 	FARPROC FrostCrashedWindow = GetLibFunc("user32.dll", "FrostCrashedWindow"); // Get a function
+	if (FrostCrashedWindow == NULL) // no FrostCrashedWindow in user32.dll = we are running Windows XP or lower
+		return 0;
 	FrostCrashedWindow(GetConsoleWindow(), 0); // Freeeeze a console window
 }
 ```
