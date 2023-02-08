@@ -19,6 +19,8 @@ To call it, use something like this (IT IS IN C):
 
 ```C
 #include <windows.h> // Hooking up WinAPI
+#include <tlhelp32.h> // Working with PID
+#include <ntdef.h> // Some NTDLL definitions
 
 // Function load macro
 #define GetLibFunc(a, b) GetProcAddress(LoadLibraryA(a), b)
